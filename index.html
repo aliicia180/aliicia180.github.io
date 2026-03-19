@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alicia Ruiz | Portfolio</title>
+
+<style>
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --accent: #6366f1;
+  --text: #e2e8f0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero p {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.hero button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  background: white;
+  color: #111;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero button:hover {
+  transform: scale(1.05);
+}
+
+/* SECTIONS */
+section {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+/* CARDS */
+.card {
+  background: var(--card);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* TECH */
+.tech span {
+  display: inline-block;
+  background: var(--accent);
+  padding: 10px 15px;
+  border-radius: 20px;
+  margin: 5px;
+}
+
+/* PROJECT GRID */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #020617;
+}
+
+/* ANIMACIÓN */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1s;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <strong>Alicia Ruiz</strong>
+  <div>
+    <a href="#about">Sobre mí</a>
+    <a href="#tech">Tecnologías</a>
+    <a href="#projects">Proyectos</a>
+    <a href="#contact">Contacto</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>👋 Hola, soy Alicia Ruiz</h1>
+  <p>Estudiante de DAM 💻 | Futura desarrolladora</p>
+  <button onclick="scrollToSection()">Ver más</button>
+</section>
+
+<section id="about" class="fade">
+  <h2>🚀 Sobre mí</h2>
+  <div class="card">
+    <p>
+      Actualmente estudio Desarrollo de Aplicaciones Multiplataforma.
+      Me gusta aprender programación, mejorar cada día y construir proyectos reales.
+    </p>
+    <p>
+      Estoy en constante crecimiento como desarrolladora y motivada por crear cosas útiles 💻✨
+    </p>
+  </div>
+</section>
+
+<section id="tech" class="fade">
+  <h2>🛠️ Tecnologías</h2>
+  <div class="card tech">
+    <span>Java</span>
+    <span>SQL</span>
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>Git</span>
+    <span>GitHub</span>
+  </div>
+</section>
+
+<section id="projects" class="fade">
+  <h2>📂 Proyectos</h2>
+  <div class="projects">
+    <div class="card">📌 Proyectos de clase</div>
+    <div class="card">🧩 Prácticas</div>
+    <div class="card">🧪 Ejercicios</div>
+    <div class="card">💡 Proyectos personales</div>
+  </div>
+</section>
+
+<section class="fade">
+  <h2>🎯 Objetivos</h2>
+  <div class="card">
+    <ul>
+      <li>Mejorar mi lógica de programación</li>
+      <li>Aprender nuevas tecnologías</li>
+      <li>Crear proyectos completos</li>
+      <li>Entrar en el mundo laboral tech</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="fade">
+  <h2>📫 Contacto</h2>
+  <div class="card">
+    <p>GitHub:</p>
+    <a href="https://github.com/aliicia180" target="_blank">
+      github.com/aliicia180
+    </a>
+  </div>
+</section>
+
+<footer>
+  ✨ Portfolio de Alicia Ruiz ✨
+</footer>
+
+<script>
+function scrollToSection() {
+  document.getElementById("about").scrollIntoView({ behavior: "smooth" });
+}
+
+const faders = document.querySelectorAll(".fade");
+
+window.addEventListener("scroll", () => {
+  faders.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add("show");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
